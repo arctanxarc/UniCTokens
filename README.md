@@ -73,7 +73,8 @@ Our research demonstrates that enhanced understanding improves generation, and t
 
 ## 📦 UniCTokens Dataset
 
-> [Download the dataset here](https://drive.google.com/file/d/1bRv_E855P2ds6_1YeyQtJ7kfUxntPoGa/view?usp=sharing)
+> [Download the dataset via google drive](https://drive.google.com/file/d/1bRv_E855P2ds6_1YeyQtJ7kfUxntPoGa/view?usp=sharing)
+> [Download the dataset via Huggingface🤗](https://huggingface.co/datasets/HankYang428/unictokens_data)
 
 ### Data Overview
 
