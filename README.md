@@ -73,7 +73,9 @@ Our research demonstrates that enhanced understanding improves generation, and t
 
 ## 📦 UniCTokens Dataset
 
-> [Download the dataset here](https://drive.google.com/file/d/1bRv_E855P2ds6_1YeyQtJ7kfUxntPoGa/view?usp=sharing)
+> [Download the dataset via google drive](https://drive.google.com/file/d/1bRv_E855P2ds6_1YeyQtJ7kfUxntPoGa/view?usp=sharing)
+> 
+> [Download the dataset via Huggingface🤗](https://huggingface.co/datasets/HankYang428/unictokens_data)
 
 ### Data Overview
 
@@ -158,12 +160,14 @@ python train_w_3_stages/train_p_stage_2.py --concept "${concept}" --data_root <p
 python train_w_3_stages/stage_2_to_3_v1.py --concept "${concept}" --ckpt_name test_train_s2  
 
 # Stage 3: Deepening understanding from generation
-python train_w_3_stages/train_p_stage_3.py --concept "${concept}" --data_root <path/to/uni_c_tokens_data> --task_name test_train_s3 --pre_trained_ckpt_name test_train_s2 --t2i_data --mmu_data  
+python train_w_3_stages/train_p_stage_3.py --concept "${concept}" --data_root <path/to/uni_c_tokens_data> --task_name example --pre_trained_ckpt_name test_train_s2 --t2i_data --mmu_data  
 ```
 
 ## 📊 Evaluation
 
 Our evaluation procedure follows the same concept-based setup as training, where each concept is evaluated individually. We provide scripts to evaluate any given concept across various metrics:
+
+> ⚠️ The following experiment examples are all run using the weights under `saves/bo/example`. Therefore, the `concept` parameter is `bo`, and `ckpt_name` is `example`.
 
 1. **Personalized Understanding** Evaluation Script
 
@@ -176,7 +180,7 @@ CLIENT = init_deepseek("your api key")
 Then run the evaluation:
 
 ```shell
-python eval/eval_p_mmu.py --data_root <path/to/uni_c_tokens_data> --concept <concept_to_eval> --ckpt_name test_train_s3 --epoch_to_load 20
+python eval/eval_p_mmu.py --data_root <path/to/uni_c_tokens_data> --concept bo --ckpt_name example --epoch_to_load 20
 ```
 
 2. **Personalized Generation - Pure Generation** Evaluation Script
@@ -185,7 +189,7 @@ python eval/eval_p_mmu.py --data_root <path/to/uni_c_tokens_data> --concept <con
 For Pure Generation, we use the test prompts from the DreamBooth dataset to compute CLIP-I and CLIP-T scores. First, generate the images to be evaluated:
 
 ```shell
-python eval/gen_p_images_for_gen_eval.py --data_root <path/to/uni_c_tokens_data> --concept <concept_to_eval> --ckpt_name test_train_s3 --epoch_to_load 20 --inverse_prompt
+python eval/gen_p_images_for_gen_eval.py --data_root <path/to/uni_c_tokens_data> --concept bo --ckpt_name example --epoch_to_load 20 --inverse_prompt
 ```
 
 After generating the images, modify the parameters as needed in `eval/clip_eval.py` and run `eval/clip_eval.py` to complete the evaluation.
@@ -195,7 +199,7 @@ After generating the images, modify the parameters as needed in `eval/clip_eval.
 For People Generation and Knowledge-driven Generation, first generate the images to be evaluated:
 
 ```shell
-python eval/gen_p_images_for_mmu_t2i.py --data_root <path/to/uni_c_tokens_data> --concept <concept_to_eval> --ckpt_name test_train_s3 --epoch_to_load 20 --inverse_prompt
+python eval/gen_p_images_for_mmu_t2i.py --data_root <path/to/uni_c_tokens_data> --concept bo --ckpt_name example --epoch_to_load 20 --inverse_prompt
 ```
 
 - **People Generation**: Modify the parameters in `eval/face_eval_v2.py`, then run `eval/face_eval_v2.py` to evaluate face generation.
@@ -220,5 +224,5 @@ If you use UniCTokens in your research, please cite our paper:
 
 ## 📬 Contact
 
-* GitHub Issues: [https://github.com/arctanxarc/UniCTokens/issues](https://github.com/arctanxarc/UniCTokens/issues)
+* Issues: [https://github.com/arctanxarc/UniCTokens/issues](https://github.com/arctanxarc/UniCTokens/issues)
 * Email: [arctanxarc@gmail.com](mailto:arctanxarc@gmail.com)
