@@ -1,0 +1,43 @@
+# Core deep learning stack
+torch==2.8.0
+torchvision==0.23.0
+torchaudio==2.8.0
+accelerate
+datasets
+trl==0.22.1
+transformers==4.55.0
+
+# Config and model utilities
+omegaconf==2.3.0
+lightning==2.5.2
+diffusers
+huggingface-hub
+safetensors==0.5.3
+packaging
+sentencepiece
+
+# Math and array utilities
+numpy>=1.24.4,<2.3.0
+einops==0.6.1
+jaxtyping==0.3.2
+typeguard==4.4.4
+
+# Data and image processing
+pillow==10.4.0
+PyYAML==6.0.2
+tqdm==4.66.4
+nltk==3.9.1
+opencv-python
+
+# Reward / evaluation dependencies
+clip @ git+https://github.com/openai/CLIP.git
+ftfy==6.3.1
+regex==2024.11.6
+insightface
+onnxruntime
+facenet-pytorch
+face-recognition
+
+# Optional LLM-based scoring backends
+zai-sdk==0.0.3.4
+google-cloud-aiplatform==1.71.1
